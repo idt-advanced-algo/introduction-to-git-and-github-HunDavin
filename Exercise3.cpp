@@ -39,23 +39,44 @@ float calculateGPA(int average){
         return 0.0;
 }
 }
-string calculateGrade(float gpa){
-    if(gpa==4.0){
+string calculateGrade(float average){
+    if(average>=90&&average<=100){
         return "A";
-    }else if(gpa==3.0){
+    }else if(average>=80&&average<=89){
         return "B";
-    }else if(gpa==2.0){
+    }else if(average>=70&&average<=79){
         return "C";
-    }else if(gpa==1.0){
+    }else if(average>=60&&average<=69){
         return "D";
-    }else if(gpa==0.0){
+    }else if(average<60){
         return "E";
     }
 
 }
+void header(){
+    cout<<"-----------------------------------------------------"<<endl;
+    cout<<"| Student ID| Name       | Average Score| GPA  | Grade|"<<endl;
+    cout<<"-----------------------------------------------------"<<endl;
+}
+
 
 
 
 int  main(){
+    cout.precision(2);
+    float average[5];
+    for(int i=0;i<5;i++){
+        average[i]=calculateAverage(students[i]);
+    }
+
+    header();
+    for(int i=0;i<5;i++){
+        
+    cout<<"|"<<setw(11)<<students[i].id;
+    cout<<"|"<<setw(12)<<students[i].name;
+    cout<<"|"<<setw(14)<<fixed<<average[i];
+    cout<<"|"<<setw(6)<<fixed<<calculateGPA(average[i]);
+    cout<<"|"<<setw(6)<<calculateGrade(average[i])<<"|"<<endl;
+    }
    
 }
